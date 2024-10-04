@@ -9,7 +9,7 @@ export const useProductStore = create((set) => ({
 		if (!newProduct.name || !newProduct.image || !newProduct.price) {
 			return { success: false, message: "Please fill in all fields." };
 		}
-		const res = await fetch("http://localhost:3000/api/products", {
+		const res = await fetch("https://backend-myinv.vercel.app/api/products", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
