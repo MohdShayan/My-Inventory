@@ -8,7 +8,9 @@ import productRoutes from "./routes/productRoutes.js"
 dotenv.config();
 const app = express();
 
-app.use(cors({ origin: 'http://localhost:5173' }));
+ConnectDB(),then(()=>{
+
+app.use(cors());
 const PORT=process.env.PORT || 3000
 
 app.use(express.json());
@@ -18,4 +20,7 @@ app.use('/api/products',productRoutes)
 app.listen(PORT, () => {
   ConnectDB();
   console.log("Server Started ! at http://localhost:"+PORT);
+});
+}).catch(err => {
+  console.error("Database connection failed:", err);
 });
